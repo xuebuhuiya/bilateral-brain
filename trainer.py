@@ -19,9 +19,13 @@ from utils import run_cli, yaml_func
 
 DEBUG = False
 
+# os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+
+# is used to calculate the total number of trainable parameters in the model. It traverses all the parameters of the model
 def count_trainable_parameters(model):
     return sum(p.numel() for p in model.parameters() if p.requires_grad)
 
+# Generate the name and version information of the experiment
 def get_exp_names(config, seed):
     mode_hemis = config['hparams']['mode_hemis']
 
@@ -43,6 +47,7 @@ def get_exp_names(config, seed):
 
     return save_dir, exp_name, version
 
+# Add the results of a two-output network to the result list
 def add_results_dual(seed, result, runs, accuracies):
     rdict = {
         'seed': seed,
@@ -54,6 +59,7 @@ def add_results_dual(seed, result, runs, accuracies):
     acc_coarse = result[0]['test_acc_coarse']
     accuracies.append((acc_fine, acc_coarse))
 
+# Used to add the results of a single output network to the results list
 def add_results_single(seed, result, runs, accuracies):
     rdict = {
         'seed': seed,
@@ -64,6 +70,7 @@ def add_results_single(seed, result, runs, accuracies):
     acc = result[0]['test_acc']
     accuracies.append(acc)
 
+# handling the results of dual output networks such as fine and coarse classification
 def collect_results_dual(runs, accuracies):
 
     accuracies_fine = [acc[0] for acc in accuracies]
@@ -84,6 +91,7 @@ def collect_results_dual(runs, accuracies):
     }
     return results
 
+# handles the results of a single output network
 def collect_results_single(runs, accuracies):
     accs = np.array(accuracies)
     mean = accs.mean()
@@ -101,21 +109,25 @@ def collect_results_single(runs, accuracies):
 
 def main(config_path) -> None:
 
+
     config = run_cli(config_path=config_path)
     seeds = config['seeds']
     mode_heads = config['hparams']['mode_heads']
     mode_out = config['hparams']['mode_out']
     mode_hemis = config['hparams']['mode_hemis']
 
-    runs, accuracies, checkpoints = [], [], []               # one for each seed
+
+    runs, accuracies, checkpoints = [], [], []  # one for each seed
     for seed in seeds:
         print(f"Running seed {seed}")
 
         if seed is not None:
             pl.seed_everything(seed)
 
-        save_dir, exp_name, version = get_exp_names(config, seed)        
+        save_dir, exp_name, version = get_exp_names(config, seed)
         logger = TensorBoardLogger(save_dir=save_dir, name=exp_name, version=version)
+        # Logging uses TensorBoardLogger to record the experimental process 
+        # and results into TensorBoard for easy subsequent viewing and analysis.
 
         monitor_var = config['ckpt_callback']['monitor']
         ckpt_callback = ModelCheckpoint(
@@ -128,6 +140,8 @@ def main(config_path) -> None:
         if config['trainer_params']['default_root_dir'] == "None":
             config['trainer_params']['default_root_dir'] = osp.dirname(__file__)
    
+        # Depending on the configuration of the model 
+        # (dual or single head network), initialise the corresponding model
         if mode_heads == 'both':
             model = SupervisedLightningModuleDualHead(config)
         else:
@@ -136,6 +150,7 @@ def main(config_path) -> None:
         num_trainable_params = count_trainable_parameters(model)
         print(f'+++++++++ Number of trainable parameters: {num_trainable_params} +++++++++')
 
+        # Setting the Trainer for PyTorch Lightning according to the configuration file
         if DEBUG:
             trainer = pl.Trainer(**config['trainer_params'],
                             callbacks=[ckpt_callback],
@@ -149,6 +164,7 @@ def main(config_path) -> None:
                             callbacks=[ckpt_callback],
                             logger=logger)
 
+        # DataModule for preparing training and test data
         imdm = DataModule(mode_heads,
                           train_dir=config['dataset']['train_dir'],
                           test_dir=config['dataset']['test_dir'],
@@ -159,7 +175,7 @@ def main(config_path) -> None:
         if mode_hemis != 'ensemble':
             trainer.fit(model, datamodule=imdm)
             
-            # get the path to the best checkpoint saved by the callback
+            # get the path to the best check      point saved by the callback
             checkpoint_path = ckpt_callback.best_model_path
             checkpoints.append(checkpoint_path)
 
@@ -167,8 +183,9 @@ def main(config_path) -> None:
         dest_dir = os.path.join(save_dir, exp_name, version)
         if not os.path.exists(dest_dir):
             os.makedirs(dest_dir)
-        shutil.copy(config_path, f'{dest_dir}/config.yaml')
-
+        shutil.copy(config_path, os.path.join(dest_dir, 'config.yaml'))
+        
+        # If config["evaluate"] is true, then evaluate the model on the test data
         if config["evaluate"]:
             result = trainer.test(model, datamodule=imdm)
             if mode_heads == 'both':
@@ -177,7 +194,7 @@ def main(config_path) -> None:
                 add_results_single(seed, result, runs, accuracies)
             
             # write results to a yaml file
-            with open(f'{dest_dir}/result.yaml', 'w') as f:
+            with open(os.path.join(dest_dir, 'result.yaml'), 'w') as f:
                 yaml.dump(result, f)
 
     if config["evaluate"]:
@@ -187,7 +204,7 @@ def main(config_path) -> None:
             results = collect_results_single(runs, accuracies)
 
         # write the results list to a yaml file
-        with open(f'{dest_dir}/result_all.yaml', 'w') as f:
+        with open(os.path.join(dest_dir, 'result_all.yaml'), 'w') as f:
             yaml.dump(results, f)
 
     return checkpoints

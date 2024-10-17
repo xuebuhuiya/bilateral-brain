@@ -95,15 +95,30 @@ class DualHeadsDataset(Dataset):
         filenames = [x.decode("utf-8")for x in filenames]
         self.coarse_label_dict = dict(zip(filenames, coarse_labels))
 
+    # def __getitem__(self, index):
+    #     path = self.samples[index]
+    #     sample = self.loader(path)
+    #     if self.transform is not None:
+    #         sample = self.transform(sample)
+    #     target = int(path.split('/')[-2])
+    #     coarselabel = self.coarse_label_dict[path.split('/')[-1]]
+    #     # logging.debug("labels --------- " + str(target) + ', ' + str(coarselabel))
+    #     data = {"image": sample, "fine": target, "coarse": coarselabel}
+    #     return data
+
     def __getitem__(self, index):
         path = self.samples[index]
         sample = self.loader(path)
         if self.transform is not None:
             sample = self.transform(sample)
-        target = int(path.split('/')[-2])
-        coarselabel = self.coarse_label_dict[path.split('/')[-1]]
+        
+        # 使用 os.path 来解析路径
+        parts = os.path.normpath(path).split(os.sep)
+        target = int(parts[-2])
+        coarselabel = self.coarse_label_dict[parts[-1]]
+        
         # logging.debug("labels --------- " + str(target) + ', ' + str(coarselabel))
-        data = {"image": sample, "fine": target, "coarse": coarselabel}
+        data = {"image": sample, "fine": torch.tensor(target, dtype=torch.long), "coarse": torch.tensor(coarselabel, dtype=torch.long)}
         return data
     
     def __len__(self):
@@ -209,17 +224,32 @@ class DataModule(pl.LightningDataModule):
 
     def setup(self, stage: Optional[str] = None):
         logger.debug("*********** DataModule - setup ***********")
+        # train_transform = transforms.Compose([
+        #     transforms.RandomCrop(32, padding=4, padding_mode='reflect'), 
+        #     transforms.RandomHorizontalFlip(),
+        #     transforms.Resize(32),
+        #     transforms.ToTensor(),
+        #     transforms.Normalize((0.5071, 0.4867, 0.4408), (0.2675, 0.2565, 0.2761))
+        # ])
+        # base_transforms = transforms.Compose([
+        #     transforms.Resize(32),
+        #     transforms.ToTensor(),
+        #     transforms.Normalize((0.5071, 0.4867, 0.4408), (0.2675, 0.2565, 0.2761))
+        # ])
         train_transform = transforms.Compose([
-            transforms.RandomCrop(32, padding=4, padding_mode='reflect'), 
+            transforms.Grayscale(num_output_channels=1),  # 将图像强制转换为单通道
+            transforms.RandomCrop(64, padding=4, padding_mode='reflect'),
             transforms.RandomHorizontalFlip(),
-            transforms.Resize(32),
+            transforms.Resize(64),
             transforms.ToTensor(),
-            transforms.Normalize((0.5071, 0.4867, 0.4408), (0.2675, 0.2565, 0.2761))
+            transforms.Normalize((0.1307,), (0.3081,))  # 灰度图像的均值和标准差只需要一个通道
         ])
+
         base_transforms = transforms.Compose([
-            transforms.Resize(32),
+            transforms.Grayscale(num_output_channels=1),  # 将图像强制转换为单通道
+            transforms.Resize(64),
             transforms.ToTensor(),
-            transforms.Normalize((0.5071, 0.4867, 0.4408), (0.2675, 0.2565, 0.2761))
+            transforms.Normalize((0.1307,), (0.3081,))  # 灰度图像的均值和标准差
         ])
         
         if self.mode_heads == 'both':
@@ -238,19 +268,21 @@ class DataModule(pl.LightningDataModule):
 
     def train_dataloader(self):
         return DataLoader(self.train_set,
-                          shuffle=True,
-                            batch_size=self.batch_size, 
-                            num_workers=self.num_workers)
+                      shuffle=True,
+                      batch_size=self.batch_size, 
+                      num_workers=self.num_workers,
+                      persistent_workers=True)  # 添加 persistent_workers=True
 
     def val_dataloader(self):
         return DataLoader(self.val_set,
-                          shuffle=False, 
-                          batch_size=self.batch_size,
-                          num_workers=self.num_workers)
+                      shuffle=False, 
+                      batch_size=self.batch_size,
+                      num_workers=self.num_workers,
+                      persistent_workers=True)  # 添加 persistent_workers=True
 
     def test_dataloader(self):
         return DataLoader(self.test_set,
-                          shuffle=False,
-                          batch_size=self.batch_size,
-                          num_workers=self.num_workers)
-    
+                      shuffle=False,
+                      batch_size=self.batch_size,
+                      num_workers=self.num_workers,
+                      persistent_workers=True)  # 添加 persistent_workers=True

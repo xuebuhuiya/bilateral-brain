@@ -6,6 +6,8 @@ from torch import nn
 from lightning import LightningModule
 from sklearn.metrics import accuracy_score
 
+import torch.nn.functional as F
+
 import sys
 sys.path.append('../')
 
@@ -66,6 +68,10 @@ class SupervisedLightningModuleDualHead(LightningModule):
             "coarse_k": self.config["hparams"].get("coarse_k"),
             "coarse_per_k": self.config["hparams"].get("coarse_per_k"),
             "dropout": self.config["hparams"].get("dropout", 0.0),
+            "cc_model": self.config["hparams"].get("cc_model", None),  # 新增字段
+            "learning_type": self.config["hparams"].get("learning_type", None),  # 新增字段
+            "connection_type": self.config["hparams"].get("connection_type", None),  # 新增字段
+            "concat_method": self.config["hparams"].get("concat_method", None),  # 新增字段
             }
         args = Namespace(**mydict)
 
@@ -91,6 +97,10 @@ class SupervisedLightningModuleDualHead(LightningModule):
         y = output
         '''
         img1, t_fine, t_coarse = batch['image'], batch['fine'], batch['coarse']
+
+        t_fine = t_fine.long()
+        t_coarse = t_coarse.long()
+        
         y_fine, y_coarse = self(img1)
         loss_fine = self.ce_loss(y_fine, t_fine) 
         loss_coarse = self.ce_loss(y_coarse, t_coarse)
@@ -165,6 +175,23 @@ class SupervisedLightningModuleDualHead(LightningModule):
         self.log(f'val_acc_fine', acc_fine)
         self.log(f'val_acc_coarse', acc_coarse)
         self.eval_step_outputs.clear()  # free memory
+        # 检查是否定义了注意力层并记录它们的权重
+        if hasattr(self.model, 'attention_fine_to_coarse'):
+            weights1 = F.softmax(self.model.attention_fine_to_coarse.weights, dim=0).data
+            self.log('val_attention_fine_to_coarse_weights1', weights1[0], on_step=False, on_epoch=True, prog_bar=True, logger=True)
+            # self.log('val_attention_fine_to_coarse_weights2', weights1[1], on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        if hasattr(self.model, 'attention_coarse_to_fine'):
+            weights2 = F.softmax(self.model.attention_coarse_to_fine.weights, dim=0).data
+            self.log('val_attention_coarse_to_fine_weights1', weights2[0], on_step=False, on_epoch=True, prog_bar=True, logger=True)
+            # self.log('val_attention_coarse_to_fine_weights2', weights2[1], on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        if hasattr(self.model, 'attention2_fine_to_coarse'):
+            weights3 = F.softmax(self.model.attention2_fine_to_coarse.weights, dim=0).data
+            self.log('val_attention2_fine_to_coarse_weights1', weights3[0], on_step=False, on_epoch=True, prog_bar=True, logger=True)
+            # self.log('val_attention2_fine_to_coarse_weights2', weights3[1], on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        if hasattr(self.model, 'attention2_coarse_to_fine'):
+            weights4 = F.softmax(self.model.attention2_coarse_to_fine.weights, dim=0).data
+            self.log('val_attention2_coarse_to_fine_weights1', weights4[0], on_step=False, on_epoch=True, prog_bar=True, logger=True)
+            # self.log('val_attention2_coarse_to_fine_weights2', weights4[1], on_step=False, on_epoch=True, prog_bar=True, logger=True)
 
     def test_step(self, batch, batch_idx):
         loss, y, t = self._step(batch)
@@ -181,6 +208,7 @@ class SupervisedLightningModuleDualHead(LightningModule):
 
         step_output = (y_fine.detach().cpu(), t_fine.detach().cpu()), (y_coarse.detach().cpu(), t_coarse.detach().cpu())
         self.eval_step_outputs.append(step_output)
+        
 
     def on_test_epoch_end(self) -> None:
         acc_fine, acc_coarse = self._calc_accuracy(self.eval_step_outputs)
