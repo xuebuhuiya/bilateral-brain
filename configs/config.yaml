@@ -1,47 +1,92 @@
-seeds: [4]    # it is possible to do multiple seeds (if there is only 1, it must still be in an array)
+# seeds: [6,7,8,9,10]    # it is possible to do multiple seeds (if there is only 1, it must still be in an array)
+seeds: [6]
+# seeds: [7]
+# seeds: [8]
+# seeds: [9]
+# seeds: [10]
+# seeds: []
 evaluate: True
 save_dir: ./runs/   # exp output folder: logs, checkpoints, hparams and accuracy
-exp_name: base
+exp_name: C2_sbmnist_test4n
 
 trainer_params:
   accelerator: auto
   devices: auto
   default_root_dir: ./runs  # root folder for pytorch-lightning (but logs and checkpoints go to the logger save_dir)
-  max_epochs: 20
+  max_epochs: 10
   log_every_n_steps: 50
   check_val_every_n_epoch: 1
-  accumulate_grad_batches: 1
+  accumulate_grad_batches: 4
+
+# dataset:
+#   train_dir: datasets/CIFAR100/train
+#   val_dir: datasets/CIFAR100/test
+#   test_dir: datasets/CIFAR100/test
+#   # train_dir: datasets/CIFAR100/train/fine
+#   # val_dir: datasets/CIFAR100/test/fine
+#   # test_dir: datasets/CIFAR100/test/fine
+#   raw_data_dir: ../datasets/cifar-100-python/  # needs a trailing slash
 
 dataset:
-  train_dir: datasets/CIFAR100/train
-  val_dir: datasets/CIFAR100/test
-  test_dir: datasets/CIFAR100/test
-  raw_data_dir: ../datasets/cifar-100-python/  # needs a trailing slash
+  train_dir: sb_mnist4new/train
+  val_dir: sb_mnist4new/test
+  test_dir: sb_mnist4new/test
+  raw_data_dir: sb_mnist41new/  # needs a trailing slash
+
 
 logger:
   type: TensorBoardLogger
 
 hparams:
   mode_out: pred            # where to get output from:         [pred | feature]
-  mode_heads: coarse        # [fine, coarse, both, features]
-  mode_hemis: unilateral    # [unilateral, bilateral, ensemble]
+  mode_heads: both     # [fine, coarse, both, features]
+  mode_hemis: bilateral    # [unilateral, bilateral, ensemble]
+  cc_model: learning               #[none,nolearning,learning]
+  learning_type: gate_control        #[learning:attention, gate_control，reinforce, transformer]
+  connection_type: convolutional_block     #[nolearning:residual_block, convolutional_block]
+  concat_method: halfdata     #[nolearning:cat, add, halfdata,ave_pooling]
   farch: resnet9            # architecture for 'fine' learning  [resnet9 | sparse_resnet9 | inverted_resnet9, resnet_x, vgg11] 
   carch: resnet9            # architecture for 'coarse' learning e.g. resnet9 THIS IS IGNORED if macro_arch is 'unilateral'
-  ffreeze: False
-  cfreeze: False
+  ffreeze: True
+  cfreeze: True
+  # ffreeze: False
+  # cfreeze: False
   lr: 1.0e-4
   weight_decay: 1.0e-5
   warmup_epochs: 0
-  batch_size: 256
+  # batch_size: 256
   num_workers: 4
+  # lr: 5.0e-5
+  # weight_decay: 2.0e-5
+  # warmup_epochs: 0
+  batch_size: 128
+  # num_workers: 4
   fine_k: 
   fine_per_k: 
   coarse_k: 
   coarse_per_k: 
   dropout: 0.6
-  model_path_fine:     # source location of specific checkpoint to load
-  model_path_coarse:   # path to broad model checkpoint
-
+  # model_path_fine:     # source location of specific checkpoint to load
+  # model_path_coarse:   # path to broad model checkpoint
+  
+  model_path_fine:  D:\Desktop\research\bilateral-brain\runs\C2_sbmnist_test4n-unilateral-resnet9-fine\20241016030655-seed6\checkpoints\epoch=2-val_acc=1.000.ckpt  # source location of specific checkpoint to load
+  model_path_coarse: D:\Desktop\research\bilateral-brain\runs\C2_sbmnist_test4n-unilateral-resnet9-coarse\20241016035921-seed6\checkpoints\epoch=11-val_acc=0.969.ckpt  # path to broad model checkpoint
+  # False
+  # 6
+  # model_path_fine: D:\Desktop\research\bilateral-brain\runs\B1_five_fine-unilateral-resnet9-fine\20240929200807-seed6\checkpoints\epoch=50-val_acc=0.668.ckpt
+  # model_path_coarse: D:\Desktop\research\bilateral-brain\runs\B1_five_coarse-unilateral-resnet9-coarse\20240929190218-seed6\checkpoints\epoch=35-val_acc=0.738.ckpt
+  # 7
+  # model_path_fine:  D:\Desktop\research\bilateral-brain\runs\B1_five_fine-unilateral-resnet9-fine\20240929202824-seed7\checkpoints\epoch=50-val_acc=0.665.ckpt
+  # model_path_coarse: D:\Desktop\research\bilateral-brain\runs\B1_five_coarse-unilateral-resnet9-coarse\20240929191534-seed7\checkpoints\epoch=34-val_acc=0.736.ckpt
+  # 8
+  # model_path_fine: D:\Desktop\research\bilateral-brain\runs\B1_five_fine-unilateral-resnet9-fine\20240929204723-seed8\checkpoints\epoch=55-val_acc=0.670.ckpt
+  # model_path_coarse: D:\Desktop\research\bilateral-brain\runs\B1_five_coarse-unilateral-resnet9-coarse\20240929192810-seed8\checkpoints\epoch=32-val_acc=0.728.ckpt
+  # 9
+  # model_path_fine: D:\Desktop\research\bilateral-brain\runs\B1_five_fine-unilateral-resnet9-fine\20240929210623-seed9\checkpoints\epoch=56-val_acc=0.674.ckpt
+  # model_path_coarse: D:\Desktop\research\bilateral-brain\runs\B1_five_coarse-unilateral-resnet9-coarse\20240929194028-seed9\checkpoints\epoch=35-val_acc=0.732.ckpt
+  # 10
+  # model_path_fine: D:\Desktop\research\bilateral-brain\runs\B1_five_fine-unilateral-resnet9-fine\20240929212532-seed10\checkpoints\epoch=53-val_acc=0.667.ckpt
+  # model_path_coarse: D:\Desktop\research\bilateral-brain\runs\B1_five_coarse-unilateral-resnet9-coarse\20240929195245-seed10\checkpoints\epoch=34-val_acc=0.731.ckpt 
 ckpt_callback:
   save_top_k: 1
   monitor: val_acc
