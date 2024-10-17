@@ -1,0 +1,305 @@
+2024-05-16 20:58:10,247 - INFO - ============================================================================
+2024-05-16 20:58:10,247 - INFO - Model: ResNet9,total_epoch:35
+2024-05-16 20:58:10,247 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-16 20:58:10,247 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.5
+2024-05-16 21:18:55,673 - INFO - Final Accuracy for Fine Model: 58.94%,Best_accuracy for Fine Model: 59.55%,
+2024-05-16 21:20:39,958 - INFO - ============================================================================
+2024-05-16 21:20:39,959 - INFO - Model: ResNet9,total_epoch:35
+2024-05-16 21:20:39,959 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-16 21:20:39,959 - INFO - Scheduler: StepLR, Step Size: 15, Gamma: 0.2
+2024-05-16 21:36:44,555 - INFO - Final Accuracy for Fine Model: 61.77%,Best_accuracy for Fine Model: 62.28%,
+2024-05-16 21:37:25,664 - INFO - ============================================================================
+2024-05-16 21:37:25,665 - INFO - Model: ResNet9,total_epoch:35
+2024-05-16 21:37:25,665 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-16 21:37:25,665 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.2
+2024-05-16 21:53:34,332 - INFO - Final Accuracy for Fine Model: 59.58%,Best_accuracy for Fine Model: 59.76%,
+2024-05-16 21:55:09,376 - INFO - ============================================================================
+2024-05-16 21:55:09,377 - INFO - Model: ResNet9,total_epoch:35
+2024-05-16 21:55:09,377 - INFO - Optimizer: Adadelta, Learning Rate: 1
+2024-05-16 21:55:09,377 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.7
+2024-05-16 22:11:26,034 - INFO - Final Accuracy for Fine Model: 66.56%,Best_accuracy for Fine Model: 66.89%,
+2024-05-16 22:21:09,088 - INFO - ============================================================================
+2024-05-16 22:21:09,088 - INFO - Model: ResNet9,total_epoch:35
+2024-05-16 22:21:09,088 - INFO - Optimizer: Adadelta, Learning Rate: 1
+2024-05-16 22:21:09,088 - INFO - Scheduler: StepLR, Step Size: 8, Gamma: 0.75
+2024-05-16 22:38:07,856 - INFO - Final Accuracy for Fine Model: 66.27%,Best_accuracy for Fine Model: 67.17%,
+2024-05-16 22:38:56,294 - INFO - ============================================================================
+2024-05-16 22:38:56,295 - INFO - Model: ResNet9,total_epoch:35
+2024-05-16 22:38:56,295 - INFO - Optimizer: AdamW, Learning Rate: 0.01
+2024-05-16 22:38:56,295 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.5
+2024-05-16 22:55:30,712 - INFO - Final Accuracy for Fine Model: 61.24%,Best_accuracy for Fine Model: 61.40%,
+2024-05-16 22:55:50,847 - INFO - ============================================================================
+2024-05-16 22:55:50,847 - INFO - Model: ResNet9,total_epoch:35
+2024-05-16 22:55:50,847 - INFO - Optimizer: AdamW, Learning Rate: 0.001
+2024-05-16 22:55:50,847 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.5
+2024-05-16 23:12:59,904 - INFO - Final Accuracy for Fine Model: 69.68%,Best_accuracy for Fine Model: 69.68%,
+2024-05-16 23:14:25,772 - INFO - ============================================================================
+2024-05-16 23:14:25,773 - INFO - Model: ResNet9,total_epoch:35
+2024-05-16 23:14:25,773 - INFO - Optimizer: AdamW, Learning Rate: 0.0005
+2024-05-16 23:14:25,773 - INFO - Scheduler: StepLR, Step Size: 20, Gamma: 0.3
+2024-05-16 23:31:04,481 - INFO - Final Accuracy for Fine Model: 69.56%,Best_accuracy for Fine Model: 69.73%,
+2024-05-16 23:34:39,990 - INFO - ============================================================================
+2024-05-16 23:34:39,991 - INFO - Model: ResNet9,total_epoch:100
+2024-05-16 23:34:39,991 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-16 23:34:39,991 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.5
+2024-05-17 00:22:34,103 - INFO - Final Accuracy for Fine Model: 64.03%,Best_accuracy for Fine Model: 64.03%,
+2024-05-17 00:23:45,327 - INFO - ============================================================================
+2024-05-17 00:23:45,327 - INFO - Model: ResNet9,total_epoch:100
+2024-05-17 00:23:45,327 - INFO - Optimizer: Adadelta, Learning Rate: 1
+2024-05-17 00:23:45,327 - INFO - Scheduler: StepLR, Step Size: 12, Gamma: 0.8
+2024-05-17 01:10:55,447 - INFO - Final Accuracy for Fine Model: 68.85%,Best_accuracy for Fine Model: 69.55%,
+
+2024-05-20 16:47:53,494 - INFO - ============================================================================
+2024-05-20 16:47:53,494 - INFO - Model: ResNet9,total_epoch:35
+2024-05-20 16:47:53,494 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-20 16:47:53,494 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.5
+2024-05-20 17:05:12,082 - INFO - Final Accuracy for Fine Model: 63.57%,Best_accuracy for Fine Model: 63.68%,
+2024-05-20 17:05:29,944 - INFO - ============================================================================
+2024-05-20 17:05:29,944 - INFO - Model: ResNet9,total_epoch:35
+2024-05-20 17:05:29,944 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-20 17:05:29,944 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.5
+2024-05-20 17:20:57,348 - INFO - Final Accuracy for Fine Model: 61.41%,Best_accuracy for Fine Model: 61.90%,
+2024-05-21 21:56:57,849 - INFO - ============================================================================
+2024-05-21 21:56:57,849 - INFO - Model: ResNet9,total_epoch:35
+2024-05-21 21:56:57,849 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-21 21:56:57,849 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.5
+2024-05-21 22:15:07,319 - INFO - Final Accuracy for Fine Model: 60.94%,Best_accuracy for Fine Model: 60.94%,
+2024-05-21 22:15:59,925 - INFO - ============================================================================
+2024-05-21 22:15:59,925 - INFO - Model: ResNet9,total_epoch:35
+2024-05-21 22:15:59,925 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-21 22:15:59,925 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.5
+2024-05-21 22:32:31,048 - INFO - Final Accuracy for Fine Model: 62.14%,Best_accuracy for Fine Model: 62.36%,
+2024-05-21 22:32:59,304 - INFO - ============================================================================
+2024-05-21 22:32:59,304 - INFO - Model: ResNet9,total_epoch:35
+2024-05-21 22:32:59,304 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-21 22:32:59,304 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.5
+2024-05-21 22:48:31,419 - INFO - Final Accuracy for Fine Model: 63.98%,Best_accuracy for Fine Model: 64.15%,
+
+2024-05-21 23:03:46,945 - INFO - ============================================================================
+2024-05-21 23:03:46,945 - INFO - Model: ResNet9,total_epoch:35
+2024-05-21 23:03:46,945 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-21 23:03:46,946 - INFO - Scheduler: StepLR, Step Size: 15, Gamma: 0.2
+2024-05-21 23:21:35,091 - INFO - Final Accuracy for Fine Model: 61.22%,Best_accuracy for Fine Model: 61.49%,
+2024-05-21 23:27:53,396 - INFO - ============================================================================
+2024-05-21 23:27:53,396 - INFO - Model: ResNet9,total_epoch:35
+2024-05-21 23:27:53,396 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-21 23:27:53,396 - INFO - Scheduler: StepLR, Step Size: 15, Gamma: 0.2
+2024-05-21 23:43:32,189 - INFO - Final Accuracy for Fine Model: 63.32%,Best_accuracy for Fine Model: 63.63%,
+2024-05-21 23:43:45,690 - INFO - ============================================================================
+2024-05-21 23:43:45,690 - INFO - Model: ResNet9,total_epoch:35
+2024-05-21 23:43:45,690 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-21 23:43:45,690 - INFO - Scheduler: StepLR, Step Size: 15, Gamma: 0.2
+2024-05-22 00:01:14,913 - INFO - Final Accuracy for Fine Model: 61.46%,Best_accuracy for Fine Model: 61.46%,
+2024-05-22 00:02:08,624 - INFO - ============================================================================
+2024-05-22 00:02:08,625 - INFO - Model: ResNet9,total_epoch:35
+2024-05-22 00:02:08,625 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-22 00:02:08,625 - INFO - Scheduler: StepLR, Step Size: 15, Gamma: 0.2
+2024-05-22 00:17:48,867 - INFO - Final Accuracy for Fine Model: 61.25%,Best_accuracy for Fine Model: 61.31%,
+2024-05-22 00:19:47,599 - INFO - ============================================================================
+2024-05-22 00:19:47,599 - INFO - Model: ResNet9,total_epoch:35
+2024-05-22 00:19:47,599 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-22 00:19:47,599 - INFO - Scheduler: StepLR, Step Size: 15, Gamma: 0.2
+2024-05-22 00:35:20,195 - INFO - Final Accuracy for Fine Model: 59.86%,Best_accuracy for Fine Model: 60.06%,
+
+2024-05-22 00:41:23,499 - INFO - ============================================================================
+2024-05-22 00:41:23,499 - INFO - Model: ResNet9,total_epoch:35
+2024-05-22 00:41:23,499 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-22 00:41:23,499 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.2
+2024-05-22 00:58:13,367 - INFO - Final Accuracy for Fine Model: 61.43%,Best_accuracy for Fine Model: 61.59%,
+2024-05-22 01:07:51,212 - INFO - ============================================================================
+2024-05-22 01:07:51,213 - INFO - Model: ResNet9,total_epoch:35
+2024-05-22 01:07:51,213 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-22 01:07:51,213 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.2
+2024-05-22 01:23:36,605 - INFO - Final Accuracy for Fine Model: 62.30%,Best_accuracy for Fine Model: 62.31%,
+2024-05-22 01:44:47,226 - INFO - ============================================================================
+2024-05-22 01:44:47,226 - INFO - Model: ResNet9,total_epoch:35
+2024-05-22 01:44:47,226 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-22 01:44:47,226 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.2
+2024-05-22 02:00:22,410 - INFO - Final Accuracy for Fine Model: 57.83%,Best_accuracy for Fine Model: 57.93%,
+2024-05-22 02:06:42,798 - INFO - ============================================================================
+2024-05-22 02:06:42,798 - INFO - Model: ResNet9,total_epoch:35
+2024-05-22 02:06:42,798 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-22 02:06:42,798 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.2
+2024-05-22 02:22:30,080 - INFO - Final Accuracy for Fine Model: 62.77%,Best_accuracy for Fine Model: 62.77%,
+2024-05-22 21:38:55,411 - INFO - ============================================================================
+2024-05-22 21:38:55,411 - INFO - Model: ResNet9,total_epoch:35
+2024-05-22 21:38:55,412 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-22 21:38:55,412 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.2
+2024-05-22 22:03:08,384 - INFO - Final Accuracy for Fine Model: 59.12%,Best_accuracy for Fine Model: 59.26%,
+
+2024-05-22 22:04:48,898 - INFO - ============================================================================
+2024-05-22 22:04:48,898 - INFO - Model: ResNet9,total_epoch:35
+2024-05-22 22:04:48,899 - INFO - Optimizer: Adadelta, Learning Rate: 1
+2024-05-22 22:04:48,899 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.7
+2024-05-22 22:21:39,404 - INFO - Final Accuracy for Fine Model: 67.25%,Best_accuracy for Fine Model: 67.25%,
+2024-05-22 22:21:49,966 - INFO - ============================================================================
+2024-05-22 22:21:49,966 - INFO - Model: ResNet9,total_epoch:35
+2024-05-22 22:21:49,966 - INFO - Optimizer: Adadelta, Learning Rate: 1
+2024-05-22 22:21:49,966 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.7
+2024-05-22 22:38:47,730 - INFO - Final Accuracy for Fine Model: 65.42%,Best_accuracy for Fine Model: 67.16%,
+2024-05-22 22:38:59,333 - INFO - ============================================================================
+2024-05-22 22:38:59,333 - INFO - Model: ResNet9,total_epoch:35
+2024-05-22 22:38:59,333 - INFO - Optimizer: Adadelta, Learning Rate: 1
+2024-05-22 22:38:59,333 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.7
+2024-05-22 22:54:58,473 - INFO - Final Accuracy for Fine Model: 67.07%,Best_accuracy for Fine Model: 67.16%,
+2024-05-22 22:55:40,786 - INFO - ============================================================================
+2024-05-22 22:55:40,786 - INFO - Model: ResNet9,total_epoch:35
+2024-05-22 22:55:40,786 - INFO - Optimizer: Adadelta, Learning Rate: 1
+2024-05-22 22:55:40,786 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.7
+2024-05-22 23:11:14,628 - INFO - Final Accuracy for Fine Model: 67.15%,Best_accuracy for Fine Model: 67.40%,
+2024-05-22 23:11:42,886 - INFO - ============================================================================
+2024-05-22 23:11:42,886 - INFO - Model: ResNet9,total_epoch:35
+2024-05-22 23:11:42,886 - INFO - Optimizer: Adadelta, Learning Rate: 1
+2024-05-22 23:11:42,886 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.7
+2024-05-22 23:27:48,728 - INFO - Final Accuracy for Fine Model: 66.86%,Best_accuracy for Fine Model: 67.18%,
+
+2024-05-22 23:34:41,077 - INFO - ============================================================================
+2024-05-22 23:34:41,077 - INFO - Model: ResNet9,total_epoch:35
+2024-05-22 23:34:41,077 - INFO - Optimizer: Adadelta, Learning Rate: 1
+2024-05-22 23:34:41,077 - INFO - Scheduler: StepLR, Step Size: 8, Gamma: 0.75
+2024-05-22 23:50:14,915 - INFO - Final Accuracy for Fine Model: 67.85%,Best_accuracy for Fine Model: 67.85%,
+2024-05-22 23:55:01,202 - INFO - ============================================================================
+2024-05-22 23:55:01,202 - INFO - Model: ResNet9,total_epoch:35
+2024-05-22 23:55:01,202 - INFO - Optimizer: Adadelta, Learning Rate: 1
+2024-05-22 23:55:01,202 - INFO - Scheduler: StepLR, Step Size: 8, Gamma: 0.75
+2024-05-22 23:55:01,203 - INFO - Model summary:
+Total params: 6,619,300
+Trainable params: 6,619,300
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.01
+Forward/backward pass size (MB): 9.38
+Params size (MB): 25.25
+Estimated Total Size (MB): 34.64
+----------------------------------------------------------------
+2024-05-23 00:10:20,112 - INFO - Final Accuracy for Fine Model: 67.54%,Best_accuracy for Fine Model: 67.64%,
+
+2024-05-23 01:07:56,502 - INFO - ============================================================================
+2024-05-23 01:07:56,502 - INFO - Model: vgg11_bn,total_epoch:35
+2024-05-23 01:07:56,502 - INFO - Optimizer: Adadelta, Learning Rate: 0.01
+2024-05-23 01:07:56,502 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.2
+2024-05-23 01:07:56,502 - INFO - Model summary:
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1           [-1, 64, 32, 32]           1,792
+       BatchNorm2d-2           [-1, 64, 32, 32]             128
+              ReLU-3           [-1, 64, 32, 32]               0
+         MaxPool2d-4           [-1, 64, 16, 16]               0
+            Conv2d-5          [-1, 128, 16, 16]          73,856
+       BatchNorm2d-6          [-1, 128, 16, 16]             256
+              ReLU-7          [-1, 128, 16, 16]               0
+         MaxPool2d-8            [-1, 128, 8, 8]               0
+            Conv2d-9            [-1, 256, 8, 8]         295,168
+      BatchNorm2d-10            [-1, 256, 8, 8]             512
+             ReLU-11            [-1, 256, 8, 8]               0
+           Conv2d-12            [-1, 256, 8, 8]         590,080
+      BatchNorm2d-13            [-1, 256, 8, 8]             512
+             ReLU-14            [-1, 256, 8, 8]               0
+        MaxPool2d-15            [-1, 256, 4, 4]               0
+           Conv2d-16            [-1, 512, 4, 4]       1,180,160
+      BatchNorm2d-17            [-1, 512, 4, 4]           1,024
+             ReLU-18            [-1, 512, 4, 4]               0
+           Conv2d-19            [-1, 512, 4, 4]       2,359,808
+      BatchNorm2d-20            [-1, 512, 4, 4]           1,024
+             ReLU-21            [-1, 512, 4, 4]               0
+        MaxPool2d-22            [-1, 512, 2, 2]               0
+           Conv2d-23            [-1, 512, 2, 2]       2,359,808
+      BatchNorm2d-24            [-1, 512, 2, 2]           1,024
+             ReLU-25            [-1, 512, 2, 2]               0
+           Conv2d-26            [-1, 512, 2, 2]       2,359,808
+      BatchNorm2d-27            [-1, 512, 2, 2]           1,024
+             ReLU-28            [-1, 512, 2, 2]               0
+        MaxPool2d-29            [-1, 512, 1, 1]               0
+AdaptiveAvgPool2d-30            [-1, 512, 7, 7]               0
+           Linear-31                 [-1, 4096]     102,764,544
+             ReLU-32                 [-1, 4096]               0
+          Dropout-33                 [-1, 4096]               0
+           Linear-34                 [-1, 4096]      16,781,312
+             ReLU-35                 [-1, 4096]               0
+          Dropout-36                 [-1, 4096]               0
+           Linear-37                  [-1, 100]         409,700
+              VGG-38                  [-1, 100]               0
+================================================================
+Total params: 129,181,540
+Trainable params: 129,181,540
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.01
+Forward/backward pass size (MB): 4.09
+Params size (MB): 492.79
+Estimated Total Size (MB): 496.89
+----------------------------------------------------------------
+
+2024-05-23 01:18:01,359 - INFO - ============================================================================
+2024-05-23 01:18:01,359 - INFO - Model: vgg11_bn,total_epoch:35
+2024-05-23 01:18:01,359 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-23 01:18:01,359 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.2
+2024-05-23 01:18:01,359 - INFO - Model summary:
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1           [-1, 64, 32, 32]           1,792
+       BatchNorm2d-2           [-1, 64, 32, 32]             128
+              ReLU-3           [-1, 64, 32, 32]               0
+         MaxPool2d-4           [-1, 64, 16, 16]               0
+            Conv2d-5          [-1, 128, 16, 16]          73,856
+       BatchNorm2d-6          [-1, 128, 16, 16]             256
+              ReLU-7          [-1, 128, 16, 16]               0
+         MaxPool2d-8            [-1, 128, 8, 8]               0
+            Conv2d-9            [-1, 256, 8, 8]         295,168
+      BatchNorm2d-10            [-1, 256, 8, 8]             512
+             ReLU-11            [-1, 256, 8, 8]               0
+           Conv2d-12            [-1, 256, 8, 8]         590,080
+      BatchNorm2d-13            [-1, 256, 8, 8]             512
+             ReLU-14            [-1, 256, 8, 8]               0
+        MaxPool2d-15            [-1, 256, 4, 4]               0
+           Conv2d-16            [-1, 512, 4, 4]       1,180,160
+      BatchNorm2d-17            [-1, 512, 4, 4]           1,024
+             ReLU-18            [-1, 512, 4, 4]               0
+           Conv2d-19            [-1, 512, 4, 4]       2,359,808
+      BatchNorm2d-20            [-1, 512, 4, 4]           1,024
+             ReLU-21            [-1, 512, 4, 4]               0
+        MaxPool2d-22            [-1, 512, 2, 2]               0
+           Conv2d-23            [-1, 512, 2, 2]       2,359,808
+      BatchNorm2d-24            [-1, 512, 2, 2]           1,024
+             ReLU-25            [-1, 512, 2, 2]               0
+           Conv2d-26            [-1, 512, 2, 2]       2,359,808
+      BatchNorm2d-27            [-1, 512, 2, 2]           1,024
+             ReLU-28            [-1, 512, 2, 2]               0
+        MaxPool2d-29            [-1, 512, 1, 1]               0
+AdaptiveAvgPool2d-30            [-1, 512, 7, 7]               0
+           Linear-31                 [-1, 4096]     102,764,544
+             ReLU-32                 [-1, 4096]               0
+          Dropout-33                 [-1, 4096]               0
+           Linear-34                 [-1, 4096]      16,781,312
+             ReLU-35                 [-1, 4096]               0
+          Dropout-36                 [-1, 4096]               0
+           Linear-37                  [-1, 100]         409,700
+              VGG-38                  [-1, 100]               0
+================================================================
+Total params: 129,181,540
+Trainable params: 129,181,540
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.01
+Forward/backward pass size (MB): 4.09
+Params size (MB): 492.79
+Estimated Total Size (MB): 496.89
+----------------------------------------------------------------
+2024-05-23 01:36:07,530 - INFO - Final Accuracy for Fine Model: 1.00%,Best_accuracy for Fine Model: 1.02%,
+2024-05-23 01:48:08,924 - INFO - ============================================================================
+2024-05-23 01:48:08,924 - INFO - Model: vgg11_bn,total_epoch:35
+2024-05-23 01:48:08,924 - INFO - Optimizer: Adam, Learning Rate: 0.001
+2024-05-23 01:48:08,924 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.2
+2024-05-23 02:05:13,147 - INFO - Final Accuracy for Fine Model: 65.06%,Best_accuracy for Fine Model: 65.17%,
+2024-06-06 22:28:51,340 - INFO - ============================================================================
+2024-06-06 22:28:51,340 - INFO - Model: ResNet9,total_epoch:60
+2024-06-06 22:28:51,340 - INFO - Optimizer: Adadelta, Learning Rate: 1
+2024-06-06 22:28:51,340 - INFO - Scheduler: StepLR, Step Size: 12, Gamma: 0.8
+2024-06-06 22:52:52,537 - INFO - Final Accuracy for Fine Model: 69.69%,Best_accuracy for Fine Model: 69.92%,
+2024-07-18 17:19:29,578 - INFO - ============================================================================
+2024-07-18 17:19:29,579 - INFO - Model: vgg11_bn,total_epoch:45
+2024-07-18 17:19:29,579 - INFO - Optimizer: Adam, Learning Rate: 1
+2024-07-18 17:19:29,579 - INFO - Scheduler: StepLR, Step Size: 12, Gamma: 0.8
+2024-07-18 18:21:42,077 - INFO - Final Accuracy for Fine Model: 60.54%,Best_accuracy for Fine Model: 60.67%,

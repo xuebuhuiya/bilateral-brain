@@ -1,0 +1,67 @@
+2024-05-16 15:37:35,419 - INFO - Final Accuracy for Coarse Model: 72.67%
+2024-05-16 16:07:04,915 - INFO - Model: ResNet9
+2024-05-16 16:07:04,915 - INFO - Optimizer: Adam, Learning Rate: 0.1
+2024-05-16 16:07:04,915 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.2
+2024-05-16 16:24:46,860 - INFO - Final Accuracy for Coarse Model: 43.45%
+2024-05-16 16:25:16,969 - INFO - Model: ResNet9,total_epoch:{num_epochs}
+2024-05-16 16:25:16,970 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-16 16:25:16,970 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.5
+2024-05-16 16:42:54,776 - INFO - Final Accuracy for Coarse Model: 76.38%
+2024-05-16 16:44:22,900 - INFO - ============================================================================
+2024-05-16 16:44:22,901 - INFO - Model: ResNet9,total_epoch:35
+2024-05-16 16:44:22,901 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-16 16:44:22,901 - INFO - Scheduler: StepLR, Step Size: 15, Gamma: 0.2
+2024-05-16 17:02:26,302 - INFO - Final Accuracy for Coarse Model: 74.67%,Best_accuracy for Coarse Model: 74.73%,
+
+Accuracy of the model on the test images (coarse): 74.94%
+Accuracy of the model on the test images (fine): 64.24%
+
+Accuracy of the model on the test images (coarse): 75.94%
+Accuracy of the model on the test images (fine): 64.84%
+
+Accuracy of the model on the test images (coarse): 4.72%
+Accuracy of the model on the test images (fine): 54.03%
+
+Accuracy of the model on the test images (coarse): 5.00%
+Accuracy of the model on the test images (fine): 59.00%
+
+Accuracy of the model on the test images (coarse): 4.38%
+Accuracy of the model on the test images (fine): 58.14%
+
+Accuracy of the model on the test images (coarse): 4.76%
+Accuracy of the model on the test images (fine): 59.65%
+
+Accuracy of the model on the test images (coarse): 5.15%
+Accuracy of the model on the test images (fine): 55.09%
+
+Accuracy of the model on the test images (coarse): 5.61%
+Accuracy of the model on the test images (fine): 58.38%
+
+Accuracy of the model on the test images (coarse): 4.40%
+Accuracy of the model on the test images (fine): 59.07%
+
+7:42 --- 8: 43
+Accuracy of the model on the test images (coarse): 4.96%
+Accuracy of the model on the test images (fine): 58.66%
+
+8:54 --- 9:58
+Accuracy of the model on the test images (coarse): 76.74%
+Accuracy of the model on the test images (fine): 66.06%
+
+10:28 --- 11:38
+Accuracy of the model on the test images (coarse): 5.83%
+Accuracy of the model on the test images (fine): 1.00%
+
+11:51 --- 12:48
+Accuracy of the model on the test images (coarse): 5.00%
+Accuracy of the model on the test images (fine): 0.99%
+
+matplotlab tensorborad keep a diary Learning curve 
+
+
+Accuracy of the model on the test images (coarse): 77.11%
+Accuracy of the model on the test images (fine): 66.78%
+
+
+Accuracy of the model on the test images (coarse): 77.08%
+Accuracy of the model on the test images (fine): 66.75%

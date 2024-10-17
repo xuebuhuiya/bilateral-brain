@@ -1,0 +1,18 @@
+Model: ResNet9,total_epoch:60
+Optimizer: Adadelta, Learning Rate: 1
+Scheduler: StepLR, Step Size: 12, Gamma: 0.8
+Seed,Final Accuracy,Best Accuracy
+42,68.69,68.98
+123,69.78,69.84
+456,68.95,69.09
+-,69.14,69.30333333333333
+-,0.4648297179254651,0.3821285414912397
+Model: resnet9,total_epoch:45
+Optimizer: Adadelta, Learning Rate: 1
+Scheduler: StepLR, Step Size: 12, Gamma: 0.8
+Seed,Final Accuracy,Best Accuracy
+42,68.24,68.71
+123,67.96,68.37
+456,68.09,68.31
+-,68.09666666666666,68.46333333333332
+-,0.11440668201153704,0.17613126418163436

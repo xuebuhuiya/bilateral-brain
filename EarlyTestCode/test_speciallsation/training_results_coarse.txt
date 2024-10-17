@@ -1,0 +1,51 @@
+2024-05-16 15:37:35,419 - INFO - Final Accuracy for Coarse Model: 72.67%
+2024-05-16 16:07:04,915 - INFO - Model: ResNet9
+2024-05-16 16:07:04,915 - INFO - Optimizer: Adam, Learning Rate: 0.1
+2024-05-16 16:07:04,915 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.2
+2024-05-16 16:24:46,860 - INFO - Final Accuracy for Coarse Model: 43.45%
+============================================================================
+2024-05-16 16:25:16,969 - INFO - Model: ResNet9,total_epoch:{num_epochs}
+2024-05-16 16:25:16,970 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-16 16:25:16,970 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.5
+2024-05-16 16:42:54,776 - INFO - Final Accuracy for Coarse Model: 76.38%
+2024-05-16 16:44:22,900 - INFO - ============================================================================
+2024-05-16 16:44:22,901 - INFO - Model: ResNet9,total_epoch:35
+2024-05-16 16:44:22,901 - INFO - Optimizer: Adam, Learning Rate: 0.01
+2024-05-16 16:44:22,901 - INFO - Scheduler: StepLR, Step Size: 15, Gamma: 0.2
+2024-05-16 17:02:26,302 - INFO - Final Accuracy for Coarse Model: 74.67%,Best_accuracy for Coarse Model: 74.73%,
+2024-05-16 17:03:49,524 - INFO - ============================================================================
+2024-05-16 17:03:49,524 - INFO - Model: ResNet9,total_epoch:35
+2024-05-16 17:03:49,524 - INFO - Optimizer: Adadelta, Learning Rate: 1
+2024-05-16 17:03:49,524 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.7
+2024-05-16 17:21:22,652 - INFO - Final Accuracy for Coarse Model: 77.49%,Best_accuracy for Coarse Model: 77.49%,
+2024-05-16 17:22:31,586 - INFO - ============================================================================
+2024-05-16 17:22:31,586 - INFO - Model: ResNet9,total_epoch:35
+2024-05-16 17:22:31,586 - INFO - Optimizer: Adadelta, Learning Rate: 1
+2024-05-16 17:22:31,586 - INFO - Scheduler: StepLR, Step Size: 8, Gamma: 0.75
+2024-05-16 17:38:36,078 - INFO - Final Accuracy for Coarse Model: 77.10%,Best_accuracy for Coarse Model: 77.10%,
+2024-05-16 17:45:42,515 - INFO - ============================================================================
+2024-05-16 17:45:42,515 - INFO - Model: ResNet9,total_epoch:100
+2024-05-16 17:45:42,515 - INFO - Optimizer: Adam, Learning Rate: 0.001
+2024-05-16 17:45:42,515 - INFO - Scheduler: StepLR, Step Size: 10, Gamma: 0.5
+2024-05-16 18:34:20,211 - INFO - Final Accuracy for Coarse Model: 80.27%,Best_accuracy for Coarse Model: 80.28%,
+2024-05-16 18:38:33,726 - INFO - ============================================================================
+2024-05-16 18:38:33,727 - INFO - Model: ResNet9,total_epoch:100
+2024-05-16 18:38:33,727 - INFO - Optimizer: Adam, Learning Rate: 0.0005
+2024-05-16 18:38:33,727 - INFO - Scheduler: StepLR, Step Size: 20, Gamma: 0.3
+2024-05-16 19:25:10,464 - INFO - Final Accuracy for Coarse Model: 80.69%,Best_accuracy for Coarse Model: 80.87%,
+2024-05-16 19:59:22,054 - INFO - ============================================================================
+2024-05-16 19:59:22,054 - INFO - Model: ResNet9,total_epoch:100
+2024-05-16 19:59:22,054 - INFO - Optimizer: Adadelta, Learning Rate: 1
+2024-05-16 19:59:22,054 - INFO - Scheduler: StepLR, Step Size: 12, Gamma: 0.8
+2024-05-16 20:44:43,588 - INFO - Final Accuracy for Coarse Model: 79.68%,Best_accuracy for Coarse Model: 79.72%,
+2024-06-06 22:57:02,370 - INFO - ============================================================================
+2024-06-06 22:57:02,370 - INFO - Model: ResNet9,total_epoch:60
+2024-06-06 22:57:02,370 - INFO - Optimizer: Adadelta, Learning Rate: 1
+2024-06-06 22:57:02,370 - INFO - Scheduler: StepLR, Step Size: 12, Gamma: 0.8
+2024-06-06 23:20:26,891 - INFO - Final Accuracy for Coarse Model: 77.95%,Best_accuracy for Coarse Model: 78.27%,
+
+2024-07-18 14:31:20,749 - INFO - ============================================================================
+2024-07-18 14:31:20,749 - INFO - Model: DenseNet,total_epoch:45
+2024-07-18 14:31:20,749 - INFO - Optimizer: Adadelta, Learning Rate: 1
+2024-07-18 14:31:20,749 - INFO - Scheduler: StepLR, Step Size: 12, Gamma: 0.8
+2024-07-18 15:32:38,566 - INFO - Final Accuracy for Coarse Model: 71.90%,Best_accuracy for Coarse Model: 73.23%,
