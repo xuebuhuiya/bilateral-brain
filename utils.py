@@ -7,12 +7,14 @@ import datetime
 import os.path as osp
 from pathlib import Path
 
+# PyTorch library for building and manipulating neural networks
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
 from PIL import Image
 import numpy as np
+# For data visualisation
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 import yaml
@@ -20,6 +22,7 @@ import yaml
 PARENT_PATH = Path(__file__).parent.resolve()
 PROJECT_PATH = PARENT_PATH.parent.parent.absolute().resolve()
 
+# is used to load the configuration file in YAML format
 def run_cli(config_path='configs/config.yaml'):
     validate_path(config_path)
     with open(config_path, 'r') as stream:
@@ -29,9 +32,11 @@ def run_cli(config_path='configs/config.yaml'):
             print(exc)
     return config
 
-
+# Processes parameters read from the configuration file 
+# and performs different actions depending on the type of parameter
 def yaml_func(config_param):
-
+    # Checks that each list item is the name of a function 
+    # defined in the current local scope
     if isinstance(config_param, list):
         call_list = []
         local_func = locals().keys()
@@ -39,6 +44,8 @@ def yaml_func(config_param):
             if param in local_func:
                 call_list.append(locals()[param])
         return call_list
+    # remove the 'type' key from the dictionary and 
+    # try to call the function in the global scope with the remaining arguments
     elif isinstance(config_param, dict):
         call = None
         global_func = globals().keys()
@@ -55,7 +62,7 @@ def pil_loader(path: str) -> Image.Image:
         img = Image.open(f)
         return img.convert('RGB')
 
-
+# Inverse normalisation of normalised image data
 def inverse_normalize(img,
                       mean=(0.485, 0.456, 0.406),
                       std=(0.229, 0.224, 0.225)):
@@ -70,17 +77,23 @@ def inverse_normalize(img,
 
 
 def matplotlib_imshow(img, one_channel=False, unnormalize=False):
+    # Calculate the mean value of all channels of the image
     if one_channel:
         img = img.mean(dim=0)
+    # Call the inverse_normalize function to inverse normalise the image    
     if unnormalize:
         img = inverse_normalize(img)  # unnormalize
     npimg = img.numpy()
+    # greyscale colour mapping
     if one_channel:
         plt.imshow(npimg, cmap="Greys")
+    # The channel moves from the first dimension to the last dimension
     else:
         plt.imshow(np.transpose(npimg, (1, 2, 0)))
 
-
+# Used to visualise the gradient flow in each layer of the model training process, 
+# which helps to diagnose problems in the training process, 
+# such as gradient vanishing or gradient explosion
 def plot_grad_flow(named_parameters):
     ave_grads = []
     layers = []
@@ -156,6 +169,8 @@ def plot_classes_preds(decode1, decode2, image1, image2):
         ax.set_title("img2")
     return fig
 
+# Used to verify whether the given file path exists, 
+# if it does then return a valid file path
 def validate_path(path):
     if osp.exists(path):
         return path
@@ -165,13 +180,17 @@ def validate_path(path):
         return osp.join(PROJECT_PATH, path)
     else:
         return FileNotFoundError
-
+# Returns the corresponding activation function object according to the type provided
+# for non-linear transformations in neural networks
 def activation_fn(fn_type):
     """Simple switcher for choosing activation functions."""
     if fn_type == 'none':
         def fn(x): return x
     elif fn_type == 'relu':
         fn = nn.ReLU()
+    # Returns the LeakyReLU activation function, 
+    # which allows small gradients when the input is negative, 
+    # helping to solve the ReLU dead neuron problem
     elif fn_type in ['leaky-relu', 'leaky_relu']:
         fn = nn.LeakyReLU()
     elif fn_type == 'tanh':
@@ -186,6 +205,7 @@ def activation_fn(fn_type):
 
     return fn
 
+# ???
 
 def build_topk_mask(x, dim=1, k=2):
     """
@@ -197,7 +217,9 @@ def build_topk_mask(x, dim=1, k=2):
     _, indices = torch.topk(x, k=k, dim=dim, sorted=False)
     return res.scatter(dim, indices, 1)
 
-
+# fills the given tensor with values drawn from a truncated normal distribution, 
+# which is a normal distribution limited to lying within a certain range 
+# (specifically, between -2 and 2 standard deviations)
 def truncated_normal_(tensor, mean=0, std=1):
     size = tensor.shape
     tmp = tensor.new_empty(size + (4,)).normal_()
@@ -207,7 +229,9 @@ def truncated_normal_(tensor, mean=0, std=1):
     tensor.data.mul_(std).add_(mean)
     return tensor
 
-
+# initializes a tensor according to a variant of the Xavier initialization scheme 
+# using a truncated normal distribution. Xavier initialization is commonly 
+# used to help keep the scale of the gradients roughly the same in all layers.
 def xavier_truncated_normal_(tensor, gain=1.0):
     gain = 1.0
     fan_in, fan_out = torch.nn.init._calculate_fan_in_and_fan_out(tensor)
@@ -215,8 +239,21 @@ def xavier_truncated_normal_(tensor, gain=1.0):
     return truncated_normal_(tensor, mean=0.0, std=std)
 
 
+# used to initialise the parameters of the neural network layer
 def initialize_parameters(m, weight_init='xavier_uniform_', bias_init='zeros_'):
     """Initialize nn.Module parameters."""
+
+    # First check if the incoming module is an instance of type nn.Linear, 
+    # nn.Conv2d or nn.ConvTranspose2d, if not, the function does nothing.
+
+    # Use the get_initializer_by_name function to get the initialisation function 
+    # for weights and biases.
+
+    # If the module has weights and the corresponding initialisation function exists, 
+    # apply that initialisation function to the weights.
+
+    # Similarly, if the module has a bias, apply the bias initialisation function
+
     if not isinstance(m, (nn.Linear, nn.Conv2d, nn.ConvTranspose2d)):
         return
 
@@ -231,17 +268,26 @@ def initialize_parameters(m, weight_init='xavier_uniform_', bias_init='zeros_'):
         bias_init_fn(m.bias)
 
 
+# get initialisation functions by name
 def get_initializer_by_name(init_type):
     # Handle custom initializers
+
+    # Special handling of custom initialisation types such as 'truncated_normal_' 
+    # and 'xavier_truncated_normal_', which are implemented through previously defined functions.
     if init_type == 'truncated_normal_':
         return lambda x: truncated_normal_(x, mean=0.0, std=0.03)
 
     if init_type == 'xavier_truncated_normal_':
         return lambda x: xavier_truncated_normal_(x)
-
+        
+    # For standard initialisation methods, use getattr from torch.nn.init.
+    # If the init_type does not exist in torch.nn.init, return None
     return getattr(torch.nn.init, init_type, None)
 
 
+# Sort and reverse traverse the dim argument and 
+# perform a max operation on each specified dimension.
+# If keepdim is true, keep the dimension of the tensor constant during the operation
 def reduce_max(x, dim=0, keepdim=False):
     """
     Performs `torch.max` over multiple dimensions of `x`
